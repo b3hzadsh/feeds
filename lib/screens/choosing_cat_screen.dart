@@ -101,23 +101,16 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                       ),
                     ),
                     // add economy politic
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        /* height: MediaQuery.of(context).size.width / 3,
-                          width: MediaQuery.of(context).size.width / 3, */
-                        child: NiceButton(
-                          width: MediaQuery.of(context).size.width / 2,
-                          elevation: 2.0,
-                          radius: 52.0,
-                          text: "ثبت",
-                          gradientColors: [secondColor, firstColor],
-                          background: Colors.blueAccent,
-                          onPressed: () {
-                            print("hello");
-                          },
-                        ),
-                      ),
+                    NiceButton(
+                      width: MediaQuery.of(context).size.width / 2,
+                      elevation: 2.0,
+                      radius: 52.0,
+                      text: "ثبت",
+                      gradientColors: [secondColor, firstColor],
+                      background: Colors.blueAccent,
+                      onPressed: () {
+                        print("hello");
+                      },
                     )
                   ],
                 ),
