@@ -41,50 +41,64 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                     ),
                   ), */
               children: [
-                Text(
-                  "موضوعات مورد علاقه خود را انتخاب و دکمه ثبت را فشار دهید",
-                  textAlign: TextAlign.center,
+                myAnimatedWidget(
+                  Text(
+                    "موضوعات مورد علاقه خود را انتخاب و دکمه ثبت را فشار دهید",
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Wrap(
                   // crossAxisAlignment: WrapCrossAlignment.center,
                   spacing: 10,
                   runSpacing: 10,
                   children: [
-                    CatCard(
-                      cardColor: Colors.white,
-                      title: "ورزشی",
-                      imageUrl: "assets/images/ball.png",
-                      // sport is 0
+                    myAnimatedWidget(
+                      CatCard(
+                        cardColor: Colors.white,
+                        title: "ورزشی",
+                        imageUrl: "assets/images/ball.png",
+                        // sport is 0
+                      ),
                     ),
-                    CatCard(
-                      cardColor: Colors.white,
-                      title: "تکنولوژی",
-                      imageUrl: "assets/images/IT.jpg",
-                      // it is 1
+                    myAnimatedWidget(
+                      CatCard(
+                        cardColor: Colors.white,
+                        title: "تکنولوژی",
+                        imageUrl: "assets/images/IT.jpg",
+                        // it is 1
+                      ),
                     ),
-                    CatCard(
-                      cardColor: Colors.white,
-                      title: "دانلود",
-                      imageUrl: "assets/images/dl.png",
-                      // dl is 2
+                    myAnimatedWidget(
+                      CatCard(
+                        cardColor: Colors.white,
+                        title: "دانلود",
+                        imageUrl: "assets/images/dl.png",
+                        // dl is 2
+                      ),
                     ),
-                    CatCard(
-                      cardColor: Colors.white,
-                      title: "بازی",
-                      imageUrl: "assets/images/game.png",
-                      // game is 3
+                    myAnimatedWidget(
+                      CatCard(
+                        cardColor: Colors.white,
+                        title: "بازی",
+                        imageUrl: "assets/images/game.png",
+                        // game is 3
+                      ),
                     ),
-                    CatCard(
-                      cardColor: Colors.white,
-                      title: "فیلم و سریال",
-                      imageUrl: "assets/images/movie.png",
-                      // movie is 4
+                    myAnimatedWidget(
+                      CatCard(
+                        cardColor: Colors.white,
+                        title: "فیلم و سریال",
+                        imageUrl: "assets/images/movie.png",
+                        // movie is 4
+                      ),
                     ),
-                    CatCard(
-                      cardColor: Colors.white,
-                      title: "اقتصاد",
-                      imageUrl: "assets/images/economy.png",
-                      // movie is 4
+                    myAnimatedWidget(
+                      CatCard(
+                        cardColor: Colors.white,
+                        title: "اقتصاد",
+                        imageUrl: "assets/images/economy.png",
+                        // movie is 4
+                      ),
                     ),
                     // add economy politic
                     ClipRRect(
@@ -114,6 +128,17 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget myAnimatedWidget(Widget widget) {
+    return ShowUpAnimation(
+      delayStart: Duration(seconds: 1),
+      animationDuration: Duration(seconds: 1),
+      curve: Curves.bounceIn,
+      direction: Direction.vertical,
+      offset: 0.5,
+      child: widget,
     );
   }
 }
