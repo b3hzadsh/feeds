@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
 class CatCard extends StatefulWidget {
   final Color cardColor;
@@ -20,9 +19,6 @@ class _CatCardState extends State<CatCard> {
         setState(() {
           isTouch = isTouch ? false : true;
         });
-        //TODO better way to save this prefs and all favorites in shared prefs
-        /* SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setBool('firstLaunch', false); */
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,18 +31,34 @@ class _CatCardState extends State<CatCard> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    widget.imageUrl,
-                    fit: BoxFit.contain,
+                  child: Container(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                          Colors.black.withOpacity(.4),
+                          Colors.black.withOpacity(.3),
+                          Colors.black.withOpacity(.1)
+                        ], begin: Alignment.bottomRight),
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                            widget.imageUrl,
+                          ),
+                          fit: BoxFit.contain),
+                    ),
                   ),
                 ), //TODO clipRrect may need
-                Positioned(
-                  child: Icon(
-                    Icons.star,
-                    color: isTouch ? Colors.yellow : Colors.grey,
+                Center(
+                  child: Opacity(
+                    opacity: 0.7,
+                    child: Icon(
+                      Icons.star,
+                      color: isTouch ? Colors.yellow : Colors.grey,
+                      size: 50,
+                    ),
                   ),
-                  top: 10.0,
-                  right: 10.0,
                 ),
               ],
             ),
@@ -55,16 +67,16 @@ class _CatCardState extends State<CatCard> {
               color: widget.cardColor,
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black12,
+                    color: Colors.black38,
                     offset: Offset(0, 2),
-                    blurRadius: 6.0)
+                    blurRadius: 8.0)
               ],
             ),
           ),
           Text(
             widget.title,
             style: TextStyle(
-              color: Color.fromRGBO(110, 150, 220, 0.9),
+              color: Colors.black87,
               fontSize: 15,
             ),
           )
