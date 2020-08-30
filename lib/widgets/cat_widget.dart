@@ -49,7 +49,7 @@ class _CatCardState extends State<CatCard> {
                           fit: BoxFit.contain),
                     ),
                   ),
-                ), //TODO clipRrect may need
+                ),
                 Center(
                   child: Opacity(
                     opacity: 0.7,
@@ -68,8 +68,8 @@ class _CatCardState extends State<CatCard> {
               boxShadow: [
                 BoxShadow(
                     color: Colors.black38,
-                    offset: Offset(0, 2),
-                    blurRadius: 8.0)
+                    offset: Offset(0, 2.5),
+                    blurRadius: 6.0)
               ],
             ),
           ),

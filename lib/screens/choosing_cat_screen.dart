@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 import 'package:flutter_app/widgets/cat_widget.dart';
 import 'package:nice_button/nice_button.dart';
+import 'package:connectivity/connectivity.dart';
+import 'dart:async';
+
+import 'dashboard.dart';
+
 // import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,6 +24,21 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
   @override
   Widget build(BuildContext context) {
     var firstColor = Colors.blue[300], secondColor = Colors.blue[500];
+
+    void gotoDash() async {
+      var connectivityResult = await (Connectivity().checkConnectivity());
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DashBoard(),
+          ),
+        );
+        print("hello");
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -36,14 +56,6 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
               // child: AnimationLimiter(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                /* children: AnimationConfiguration.toStaggeredList(
-                    duration: const Duration(milliseconds: 275),
-                    childAnimationBuilder: (widget) => SlideAnimation(
-                      horizontalOffset: 70.0,
-                      child: FadeInAnimation(
-                        child: widget,
-                      ),
-                    ), */
                 children: [
                   SizedBox(
                     height: 10,
@@ -129,9 +141,7 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                         text: "ثبت",
                         gradientColors: [secondColor, firstColor],
                         background: Colors.blueAccent,
-                        onPressed: () {
-                          print("hello");
-                        },
+                        onPressed: gotoDash,
                       ),
                       10),
                 ], /* 
@@ -147,8 +157,8 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
 
   Widget myAnimatedWidget(Widget widget, int index) {
     return ShowUpAnimation(
-      delayStart: Duration(milliseconds: 500 * index),
-      animationDuration: Duration(milliseconds: 500),
+      delayStart: Duration(milliseconds: 400 * index),
+      animationDuration: Duration(milliseconds: 350),
       curve: Curves.bounceIn,
       direction: Direction.horizontal,
       offset: (index % 2 == 0) ? 0.6 : -0.6,

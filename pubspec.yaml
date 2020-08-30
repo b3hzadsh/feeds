@@ -34,6 +34,8 @@ dependencies:
   nice_button: ^0.1.7
   flutter_staggered_animations: "^0.1.2"
   show_up_animation: ^1.0.2
+  connectivity: ^0.4.9+2
+  http: ^0.12.2
 
 dev_dependencies:
   flutter_test:
