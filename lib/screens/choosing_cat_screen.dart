@@ -3,10 +3,8 @@ import 'package:show_up_animation/show_up_animation.dart';
 import 'package:flutter_app/widgets/cat_widget.dart';
 import 'package:nice_button/nice_button.dart';
 import 'package:connectivity/connectivity.dart';
-import 'dart:async';
-
+// import 'dart:async';
 import 'dashboard.dart';
-
 // import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
@@ -24,12 +22,12 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
   @override
   Widget build(BuildContext context) {
     var firstColor = Colors.blue[300], secondColor = Colors.blue[500];
-
     void gotoDash() async {
+      //TODO  save favorites in shard peres and send it to dashboard to quick resault
       var connectivityResult = await (Connectivity().checkConnectivity());
       if (connectivityResult == ConnectivityResult.mobile ||
           connectivityResult == ConnectivityResult.wifi) {
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => DashBoard(),

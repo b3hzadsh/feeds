@@ -7,23 +7,40 @@ class NewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String smallerString() {
+      var spilited = desc.split(" ");
+      String temp = "";
+      for (int i = 0; i < 5; i++) {
+        temp += spilited[i] + " ";
+      }
+      temp += ".... ";
+      return temp;
+    }
+
     return Column(
       children: <Widget>[
         Divider(
           height: 3.4,
         ),
         ListTile(
+            // contentPadding: EdgeInsets.symmetric(horizontal: 15),
             title: Text(
-              (title),
+              title,
+              textDirection: TextDirection.rtl,
+              textAlign: TextAlign.right,
               style: TextStyle(fontSize: 17.2, fontWeight: FontWeight.bold),
             ),
-            subtitle: Text(desc),
-            //Paulo [P,a,u,l,o]
-            leading: CircleAvatar(
-              //radius: 45.6,
-              backgroundColor: Colors.orange,
-              child: Text(title[0]),
+            subtitle: Text(
+              smallerString(),
+              textDirection: TextDirection.rtl,
+              textAlign: TextAlign.right,
             ),
+            //Paulo [P,a,u,l,o]
+            leading: IconButton(
+                icon: Icon(Icons.star),
+                onPressed: () {
+                  //TODO make icon yellow and write it in database
+                }),
             onTap: () => {})
       ],
     );

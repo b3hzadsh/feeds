@@ -40,7 +40,7 @@ class _DashBoardState extends State<DashBoard> {
       body: isReady
           ? Container(
               child: ListView.builder(
-                padding: EdgeInsets.all(4.5),
+                padding: EdgeInsets.all(8),
                 itemCount: x.items.length,
                 itemBuilder: (context, index) {
                   return NewsWidget(
