@@ -15,7 +15,7 @@ class _CatCardState extends State<CatCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
+      onTap: () {
         setState(() {
           isTouch = isTouch ? false : true;
         });

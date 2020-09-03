@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 import 'package:flutter_app/widgets/cat_widget.dart';
 import 'package:nice_button/nice_button.dart';
-import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity/connectivity.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'dart:async';
 import 'dashboard.dart';
 // import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -19,14 +20,23 @@ class ChoosingCatScreen extends StatefulWidget {
 }
 
 class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
+  var prefs;
+  @override
+  void initState() {
+    prefInit();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var firstColor = Colors.blue[300], secondColor = Colors.blue[500];
-    void gotoDash() async {
+    void gotoDash() {
       //TODO  save favorites in shard peres and send it to dashboard to quick resault
-      var connectivityResult = await (Connectivity().checkConnectivity());
+      /* var connectivityResult = await (Connectivity().checkConnectivity());
       if (connectivityResult == ConnectivityResult.mobile ||
-          connectivityResult == ConnectivityResult.wifi) {
+          connectivityResult == ConnectivityResult.wifi) */
+      {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -40,7 +50,7 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "انتخاب موضوع",
+          "انتخاب دسته ها ",
         ),
         centerTitle: true,
       ),
@@ -61,7 +71,7 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                   myAnimatedWidget(
                       Container(
                         child: Text(
-                          "حداقل یک موضوع را انتخاب کنید",
+                          "مایلید در جریان کدام اخبار قرار بگیرید ؟",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -162,5 +172,14 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
       offset: (index % 2 == 0) ? 0.6 : -0.6,
       child: widget,
     );
+  }
+
+  void prefInit() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
+  void prefSet(int index, bool isCheck) async {
+    // var prefs = await SharedPreferences.getInstance();
+    prefs.setBool("index", isCheck);
   }
 }

@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
-class NewsWidget extends StatelessWidget {
+class NewsWidget extends StatefulWidget {
   final String title;
   final String desc;
   NewsWidget({this.title, this.desc});
 
   @override
+  _NewsWidgetState createState() => _NewsWidgetState();
+}
+
+class _NewsWidgetState extends State<NewsWidget> {
+  @override
   Widget build(BuildContext context) {
+    bool isChecked = false;
     String smallerString() {
-      var spilited = desc.split(" ");
+      var spilited = widget.desc.split(" ");
+      var range = spilited.length;
       String temp = "";
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < 8 && i < range; i++) {
         temp += spilited[i] + " ";
       }
       temp += ".... ";
@@ -19,13 +26,10 @@ class NewsWidget extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        Divider(
-          height: 3.4,
-        ),
         ListTile(
             // contentPadding: EdgeInsets.symmetric(horizontal: 15),
             title: Text(
-              title,
+              widget.title,
               textDirection: TextDirection.rtl,
               textAlign: TextAlign.right,
               style: TextStyle(fontSize: 17.2, fontWeight: FontWeight.bold),
@@ -37,11 +41,20 @@ class NewsWidget extends StatelessWidget {
             ),
             //Paulo [P,a,u,l,o]
             leading: IconButton(
-                icon: Icon(Icons.star),
+                icon: Icon(
+                  Icons.star,
+                  color: isChecked ? Colors.yellow : Colors.grey,
+                ),
                 onPressed: () {
+                  setState(() {
+                    isChecked = !isChecked;
+                  });
                   //TODO make icon yellow and write it in database
                 }),
-            onTap: () => {})
+            onTap: () => {}),
+        Divider(
+          height: 3.4,
+        ),
       ],
     );
 

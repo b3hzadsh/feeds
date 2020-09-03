@@ -31,15 +31,16 @@ class _SplashScreenState extends State<SplashScreen> {
     final firstRun = prefs.getBool('first run') ?? 0;
     if (firstRun == 0 || firstRun == false) {
       prefs.setBool('first run', true);
+
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (BuildContext context) => ChoosingCatScreen(),
+          builder: (context) => ChoosingCatScreen(),
         ),
       );
     } else
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (BuildContext context) => DashBoard(),
+          builder: (context) => DashBoard(),
         ),
       );
   }
