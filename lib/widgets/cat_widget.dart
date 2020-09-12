@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CatCard extends StatefulWidget {
+  @required
+  final int id;
+
+  @required
   final Color cardColor;
+
+  @required
   final String imageUrl;
+  @required
   final String title;
-  CatCard({this.cardColor, this.imageUrl, this.title});
+  CatCard({this.cardColor, this.imageUrl, this.title, this.id});
   @override
   _CatCardState createState() => _CatCardState();
 }
 
 class _CatCardState extends State<CatCard> {
+  SharedPreferences prefs;
   bool isTouch = false;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         setState(() {
           isTouch = isTouch ? false : true;
         });
+        //TODO below stuff
+        /*  var prefs = await SharedPreferences.getInstance();
+
+        prefs.setBool("index", isTouch); */
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -83,5 +97,11 @@ class _CatCardState extends State<CatCard> {
         ],
       ),
     );
+  }
+
+  void prefsStuff() async {
+    prefs = await SharedPreferences.getInstance();
+
+    // prefs.setBool("index", isTouch);
   }
 }

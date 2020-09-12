@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 class NewsWidget extends StatefulWidget {
   final String title;
@@ -49,6 +50,7 @@ class _NewsWidgetState extends State<NewsWidget> {
                   setState(() {
                     isChecked = !isChecked;
                   });
+
                   //TODO make icon yellow and write it in database
                 }),
             onTap: () => {}),

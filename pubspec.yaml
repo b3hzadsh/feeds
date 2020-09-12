@@ -37,6 +37,7 @@ dependencies:
   connectivity: ^0.4.9+2
   http: ^0.12.2
   shared_preferences: ^0.5.10
+  drawing_animation: ^0.1.3
 
 dev_dependencies:
   flutter_test:
@@ -60,6 +61,8 @@ flutter:
     - assets/images/game.png
     - assets/images/movie.png
     - assets/images/economy.png
+    - assets/images/rss.svg
+
     
 
   # To add assets to your application, add an assets section, like this:

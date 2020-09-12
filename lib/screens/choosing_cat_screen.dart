@@ -89,50 +89,56 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                     children: [
                       myAnimatedWidget(
                           CatCard(
+                            id: 9,
                             cardColor: Colors.white,
                             title: "ورزشی",
                             imageUrl: "assets/images/ball.png",
-                            // sport is 0
+                            // sport is 9
                           ),
                           4),
                       myAnimatedWidget(
                           CatCard(
+                            id: 3,
                             cardColor: Colors.white,
                             title: "تکنولوژی",
                             imageUrl: "assets/images/IT.jpg",
-                            // it is 1
+                            // it is 3
                           ),
                           5),
                       myAnimatedWidget(
                           CatCard(
+                            id: 0,
                             cardColor: Colors.white,
                             title: "دانلود",
                             imageUrl: "assets/images/dl.png",
-                            // dl is 2
+                            // dl is 0
                           ),
                           6),
                       myAnimatedWidget(
                           CatCard(
+                            id: 2,
                             cardColor: Colors.white,
                             title: "بازی",
                             imageUrl: "assets/images/game.png",
-                            // game is 3
+                            // game is 2
                           ),
                           7),
                       myAnimatedWidget(
                           CatCard(
+                            id: 1,
                             cardColor: Colors.white,
                             title: "فیلم و سریال",
                             imageUrl: "assets/images/movie.png",
-                            // movie is 4
+                            // movie is 1
                           ),
                           8),
                       myAnimatedWidget(
                           CatCard(
+                            id: 4,
                             cardColor: Colors.white,
                             title: "اقتصاد",
                             imageUrl: "assets/images/economy.png",
-                            // movie is 4
+                            // economy is 4
                           ),
                           9),
                       // add economy politic
