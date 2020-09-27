@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_app/data/feeds.dart';
+import 'package:flutter_app/screens/dashboard_temmplate.dart';
+import '../utils/my_functoins.dart';
 
 class CatCard extends StatefulWidget {
   @required
-  final int id;
+  final String id;
 
   @required
   final Color cardColor;
@@ -18,21 +20,18 @@ class CatCard extends StatefulWidget {
   _CatCardState createState() => _CatCardState();
 }
 
-class _CatCardState extends State<CatCard> {
-  SharedPreferences prefs;
-  bool isTouch = false;
-
+class _CatCardState extends State<CatCard> with WowFeeds {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
-        setState(() {
-          isTouch = isTouch ? false : true;
-        });
-        //TODO below stuff
-        /*  var prefs = await SharedPreferences.getInstance();
-
-        prefs.setBool("index", isTouch); */
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                DaashboardTemplate(FeedData.feedUrls[widget.id], widget.title),
+          ),
+        );
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,16 +63,6 @@ class _CatCardState extends State<CatCard> {
                     ),
                   ),
                 ),
-                Center(
-                  child: Opacity(
-                    opacity: 0.7,
-                    child: Icon(
-                      Icons.star,
-                      color: isTouch ? Colors.yellow : Colors.grey,
-                      size: 50,
-                    ),
-                  ),
-                ),
               ],
             ),
             decoration: BoxDecoration(
@@ -97,11 +86,5 @@ class _CatCardState extends State<CatCard> {
         ],
       ),
     );
-  }
-
-  void prefsStuff() async {
-    prefs = await SharedPreferences.getInstance();
-
-    // prefs.setBool("index", isTouch);
   }
 }

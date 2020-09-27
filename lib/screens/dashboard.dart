@@ -1,6 +1,8 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/choosing_cat_screen.dart';
+import 'package:flutter_app/screens/splash_screen.dart';
+import 'package:flutter_app/screens/state_managment/state_managment.dart';
 import 'package:flutter_app/widgets/news_widget.dart';
 import 'package:http/http.dart' as http;
 import 'package:dart_rss/dart_rss.dart';
@@ -22,43 +24,18 @@ class _DashBoardState extends State<DashBoard> {
       appBar: AppBar(
         title: Text("صفحه اول "),
         actions: [
-          /* IconButton(icon: Icon(Icons.refresh), onPressed: refresh),
+          IconButton(icon: Icon(Icons.refresh), onPressed: refresh),
           IconButton(
-              icon: Icon(Icons.more_vert),
+              icon: Icon(Icons.fullscreen),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (contex) => ChoosingCatScreen()));
-              }) */
-
-          DropdownButton<String>(
-            isDense: true,
-            icon: Icon(
-              Icons.more_vert,
-              size: 45,
-              color: Colors.white,
-            ),
-            items: <String>['اپدیت‌اخبار', 'تغییر‌دسته‌ها'].map((String value) {
-              return new DropdownMenuItem<String>(
-                value: value,
-                child: new Text(value),
-              );
-            }).toList(),
-            onChanged: (String value) async {
-              if (value == 'اپدیت‌اخبار') {
-                refresh();
-              }
-              if (value == 'تغییر‌دسته‌ها') {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (contex) => ChoosingCatScreen(),
+                    builder: (contex) => SplashScreen(),
                   ),
                 );
-              }
-            },
-          )
+              }),
+          _simplePopup(context),
         ],
       ),
       body: isReady
@@ -84,8 +61,8 @@ class _DashBoardState extends State<DashBoard> {
                 child: Column(
                   children: [
                     Center(
-                        /*  child: RaisedButton(onPressed: () {}), */
-                        ),
+                      child: RaisedButton(onPressed: () {}),
+                    ),
                   ],
                 ),
               ),
@@ -112,4 +89,43 @@ class _DashBoardState extends State<DashBoard> {
       });
     }
   }
+
+  Widget _simplePopup(BuildContext context) => PopupMenuButton<int>(
+        color: Colors.white,
+        icon: Icon(Icons.more_vert),
+        onSelected: (value) async {
+          if (value == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (contex) => ChoosingCatScreen(),
+              ),
+            );
+          }
+          if (value == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (contex) => SteteManagmentScreen(),
+              ),
+            );
+          }
+        },
+        itemBuilder: (context) => [
+          PopupMenuItem(
+            value: 1,
+            child: Text(
+              "انتخاب دسته",
+              style: TextStyle(color: Colors.black54),
+            ),
+          ),
+          PopupMenuItem(
+            value: 2,
+            child: Text(
+              "state managment",
+              style: TextStyle(color: Colors.black87),
+            ),
+          ),
+        ],
+      );
 }

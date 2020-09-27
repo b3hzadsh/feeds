@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 class NewsWidget extends StatefulWidget {
+  bool isChecked = false;
   final String title;
   final String desc;
   NewsWidget({this.title, this.desc});
@@ -13,7 +14,6 @@ class NewsWidget extends StatefulWidget {
 class _NewsWidgetState extends State<NewsWidget> {
   @override
   Widget build(BuildContext context) {
-    bool isChecked = false;
     String smallerString() {
       var spilited = widget.desc.split(" ");
       var range = spilited.length;
@@ -27,36 +27,39 @@ class _NewsWidgetState extends State<NewsWidget> {
 
     return Column(
       children: <Widget>[
-        ListTile(
-            // contentPadding: EdgeInsets.symmetric(horizontal: 15),
-            title: Text(
-              widget.title,
-              textDirection: TextDirection.rtl,
-              textAlign: TextAlign.right,
-              style: TextStyle(fontSize: 17.2, fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text(
-              smallerString(),
-              textDirection: TextDirection.rtl,
-              textAlign: TextAlign.right,
-            ),
-            //Paulo [P,a,u,l,o]
-            leading: IconButton(
-                icon: Icon(
-                  Icons.star,
-                  color: isChecked ? Colors.yellow : Colors.grey,
-                ),
-                onPressed: () {
-                  setState(() {
-                    isChecked = !isChecked;
-                  });
+        Card(
+          elevation: 0.6,
+          child: ListTile(
+              // contentPadding: EdgeInsets.symmetric(horizontal: 15),
+              title: Text(
+                widget.title,
+                textDirection: TextDirection.rtl,
+                textAlign: TextAlign.right,
+                style: TextStyle(fontSize: 17.2, fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                smallerString(),
+                textDirection: TextDirection.rtl,
+                textAlign: TextAlign.right,
+              ),
+              //Paulo [P,a,u,l,o]
+              leading: IconButton(
+                  icon: Icon(
+                    Icons.star,
+                    color: widget.isChecked ? Colors.orangeAccent : Colors.grey,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      widget.isChecked = !widget.isChecked;
+                    });
 
-                  //TODO make icon yellow and write it in database
-                }),
-            onTap: () => {}),
-        Divider(
-          height: 3.4,
+                    //TODO make icon yellow and write it in database
+                  }),
+              onTap: () => {}),
         ),
+        /* Divider(
+          height: 3.4,
+        ), */
       ],
     );
 

@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 import 'package:flutter_app/widgets/cat_widget.dart';
-import 'package:nice_button/nice_button.dart';
+// import 'package:nice_button/nice_button.dart';
 // import 'package:connectivity/connectivity.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-// import 'dart:async';
-import 'dashboard.dart';
-// import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
-
-/* void setPerfs() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setBool('firstLaunch', true);
-} */
+// import 'dart:async';
+// import 'dashboard.dart';
 
 class ChoosingCatScreen extends StatefulWidget {
   @override
@@ -20,33 +13,8 @@ class ChoosingCatScreen extends StatefulWidget {
 }
 
 class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
-  var prefs;
-  @override
-  void initState() {
-    prefInit();
-    // TODO: implement initState
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    var firstColor = Colors.blue[300], secondColor = Colors.blue[500];
-    void gotoDash() {
-      //TODO  save favorites in shard peres and send it to dashboard to quick resault
-      /* var connectivityResult = await (Connectivity().checkConnectivity());
-      if (connectivityResult == ConnectivityResult.mobile ||
-          connectivityResult == ConnectivityResult.wifi) */
-      {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DashBoard(),
-          ),
-        );
-        print("hello");
-      }
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -89,7 +57,7 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                     children: [
                       myAnimatedWidget(
                           CatCard(
-                            id: 9,
+                            id: "sports",
                             cardColor: Colors.white,
                             title: "ورزشی",
                             imageUrl: "assets/images/ball.png",
@@ -98,7 +66,7 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                           4),
                       myAnimatedWidget(
                           CatCard(
-                            id: 3,
+                            id: 'it',
                             cardColor: Colors.white,
                             title: "تکنولوژی",
                             imageUrl: "assets/images/IT.jpg",
@@ -107,7 +75,7 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                           5),
                       myAnimatedWidget(
                           CatCard(
-                            id: 0,
+                            id: 'dls',
                             cardColor: Colors.white,
                             title: "دانلود",
                             imageUrl: "assets/images/dl.png",
@@ -116,7 +84,7 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                           6),
                       myAnimatedWidget(
                           CatCard(
-                            id: 2,
+                            id: 'game',
                             cardColor: Colors.white,
                             title: "بازی",
                             imageUrl: "assets/images/game.png",
@@ -125,7 +93,7 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                           7),
                       myAnimatedWidget(
                           CatCard(
-                            id: 1,
+                            id: 'movie',
                             cardColor: Colors.white,
                             title: "فیلم و سریال",
                             imageUrl: "assets/images/movie.png",
@@ -134,33 +102,56 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                           8),
                       myAnimatedWidget(
                           CatCard(
-                            id: 4,
+                            id: 'economy',
                             cardColor: Colors.white,
                             title: "اقتصاد",
                             imageUrl: "assets/images/economy.png",
                             // economy is 4
                           ),
                           9),
+                      myAnimatedWidget(
+                          CatCard(
+                            id: 'politics',
+                            cardColor: Colors.white,
+                            title: "سیاست",
+                            imageUrl: "assets/images/politic.jpg",
+                            // economy is 4
+                          ),
+                          10),
+                      myAnimatedWidget(
+                          CatCard(
+                            id: 'iranianFootbal',
+                            cardColor: Colors.white,
+                            title: "فوتبال ایران",
+                            imageUrl: "assets/images/footbal.png",
+                            // economy is 4
+                          ),
+                          11),
+                      myAnimatedWidget(
+                          CatCard(
+                            id: 'scientificAcademic',
+                            cardColor: Colors.white,
+                            title: "علمی دانشگاهی",
+                            imageUrl: "assets/images/uni.jpg",
+                            // economy is 4
+                          ),
+                          12),
+                      myAnimatedWidget(
+                          CatCard(
+                            id: 'lastNews',
+                            cardColor: Colors.white,
+                            title: "تازه ترین اخبار",
+                            imageUrl: "assets/images/breaking.png",
+                            // economy is 4
+                          ),
+                          13),
                       // add economy politic
                     ],
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  myAnimatedWidget(
-                      NiceButton(
-                        width: MediaQuery.of(context).size.width / 2,
-                        elevation: 2.0,
-                        radius: 52.0,
-                        text: "ثبت",
-                        gradientColors: [secondColor, firstColor],
-                        background: Colors.blueAccent,
-                        onPressed: gotoDash,
-                      ),
-                      10),
-                ], /* 
-                  ),
-                ), */
+                ],
               ),
             ),
           ),
@@ -175,17 +166,8 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
       animationDuration: Duration(milliseconds: 350),
       curve: Curves.bounceIn,
       direction: Direction.horizontal,
-      offset: (index % 2 == 0) ? 0.6 : -0.6,
+      offset: (index % 2 == 0) ? 0.7 : -0.5,
       child: widget,
     );
-  }
-
-  void prefInit() async {
-    prefs = await SharedPreferences.getInstance();
-  }
-
-  void prefSet(int index, bool isCheck) async {
-    // var prefs = await SharedPreferences.getInstance();
-    prefs.setBool("index", isCheck);
   }
 }

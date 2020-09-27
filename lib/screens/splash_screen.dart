@@ -1,9 +1,9 @@
 import 'package:drawing_animation/drawing_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/choosing_cat_screen.dart';
-import 'package:flutter_app/screens/dashboard.dart';
+// import 'package:flutter_app/screens/dashboard.dart';
 import 'dart:async';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/animation.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,27 +21,37 @@ class _SplashScreenState extends State<SplashScreen>
     // TODO: implement initState
     super.initState();
     controller.forward();
-    Timer(Duration(seconds: 6), toRightSScreen);
+    // Timer(Duration(seconds: 8), toRightSScreen);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(28),
-        margin: EdgeInsets.all(8),
+        margin: EdgeInsets.symmetric(vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 15),
         child: Center(
           child: Column(
             children: [
-              Expanded(
-                child: AnimatedDrawing.svg(
-                  "assets/images/rss.svg",
-                  controller: controller,
+              Container(
+                child: Expanded(
+                  child: AnimatedDrawing.svg(
+                    "assets/images/rss.svg",
+                    controller: controller,
+                    onFinish: () {
+                      Timer(
+                        Duration(milliseconds: 200),
+                        toRightSScreen,
+                      );
+                    },
+                    animationCurve: Curves.easeInOutBack,
+                  ),
                 ),
               ),
               Container(
+                width: MediaQuery.of(context).size.width / 7,
+                height: MediaQuery.of(context).size.width / 7,
                 child: CircularProgressIndicator(),
-                height: 50,
               ),
             ],
           ),
@@ -50,22 +60,11 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  void toRightSScreen() async {
-    final prefs = await SharedPreferences.getInstance();
-    final firstRun = prefs.getBool('first run') ?? 0;
-    if (firstRun == 0 || firstRun == false) {
-      prefs.setBool('first run', true);
-
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => ChoosingCatScreen(),
-        ),
-      );
-    } else
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => DashBoard(),
-        ),
-      );
+  void toRightSScreen() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => ChoosingCatScreen(),
+      ),
+    );
   }
 }
