@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_app/data/feeds.dart';
-import 'package:flutter_app/screens/dashboard_temmplate.dart';
-import '../utils/my_functoins.dart';
 
-class CatCard extends StatefulWidget {
+class CatCard extends StatelessWidget {
   @required
   final String id;
 
@@ -16,22 +13,19 @@ class CatCard extends StatefulWidget {
   @required
   final String title;
   CatCard({this.cardColor, this.imageUrl, this.title, this.id});
-  @override
-  _CatCardState createState() => _CatCardState();
-}
 
-class _CatCardState extends State<CatCard> with WowFeeds {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
+        Navigator.pushNamed(context, "/id:$id/title:$title");
+
+        /* Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) =>
-                DaashboardTemplate(FeedData.feedUrls[widget.id], widget.title),
+                DaashboardTemplate(FeedData.feedUrls[id], title),
           ),
-        );
+        ); */
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,7 +40,7 @@ class _CatCardState extends State<CatCard> with WowFeeds {
                   borderRadius: BorderRadius.circular(10),
                   child: Container(
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: new BoxDecoration(
                         gradient: LinearGradient(colors: [
                           Colors.black.withOpacity(.4),
                           Colors.black.withOpacity(.3),
@@ -57,7 +51,7 @@ class _CatCardState extends State<CatCard> with WowFeeds {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(
-                            widget.imageUrl,
+                            imageUrl,
                           ),
                           fit: BoxFit.contain),
                     ),
@@ -67,7 +61,7 @@ class _CatCardState extends State<CatCard> with WowFeeds {
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: widget.cardColor,
+              color: cardColor,
               boxShadow: [
                 BoxShadow(
                     color: Colors.black38,
@@ -77,7 +71,7 @@ class _CatCardState extends State<CatCard> with WowFeeds {
             ),
           ),
           Text(
-            widget.title,
+            title,
             style: TextStyle(
               color: Colors.black87,
               fontSize: 15,

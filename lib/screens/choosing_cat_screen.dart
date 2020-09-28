@@ -7,12 +7,7 @@ import 'package:flutter_app/widgets/cat_widget.dart';
 // import 'dart:async';
 // import 'dashboard.dart';
 
-class ChoosingCatScreen extends StatefulWidget {
-  @override
-  _ChoosingCatScreenState createState() => _ChoosingCatScreenState();
-}
-
-class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
+class ChoosingCatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,9 +143,6 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
                       // add economy politic
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
                 ],
               ),
             ),
@@ -166,8 +158,28 @@ class _ChoosingCatScreenState extends State<ChoosingCatScreen> {
       animationDuration: Duration(milliseconds: 350),
       curve: Curves.bounceIn,
       direction: Direction.horizontal,
-      offset: (index % 2 == 0) ? 0.7 : -0.5,
+      offset: (index % 2 == 0) ? 0.4 : -0.4,
       child: widget,
     );
   }
+  /* Widget Navigator ({Widget child ,String title , String id}){
+
+    return GestureDetector(
+      child: ,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                DaashboardTemplate(FeedData.feedUrls[widget.id], widget.title),
+          ),
+        );
+      },
+    );
+  } */
+  /*  Widget myAnimatedWidget(Widget widget, int index) {
+    return Center(
+      child: widget,
+    );
+  } */
 }

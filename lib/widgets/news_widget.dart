@@ -5,7 +5,8 @@ class NewsWidget extends StatefulWidget {
   bool isChecked = false;
   final String title;
   final String desc;
-  NewsWidget({this.title, this.desc});
+  final String url;
+  NewsWidget({this.title, this.desc, this.url});
 
   @override
   _NewsWidgetState createState() => _NewsWidgetState();
@@ -28,7 +29,8 @@ class _NewsWidgetState extends State<NewsWidget> {
     return Column(
       children: <Widget>[
         Card(
-          elevation: 0.6,
+          elevation: 0.8,
+          shadowColor: Colors.black38,
           child: ListTile(
               // contentPadding: EdgeInsets.symmetric(horizontal: 15),
               title: Text(

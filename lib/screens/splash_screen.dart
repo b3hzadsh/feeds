@@ -21,6 +21,10 @@ class _SplashScreenState extends State<SplashScreen>
     // TODO: implement initState
     super.initState();
     controller.forward();
+    Timer(
+      Duration(milliseconds: 5600),
+      toRightSScreen,
+    );
     // Timer(Duration(seconds: 8), toRightSScreen);
   }
 
@@ -39,10 +43,7 @@ class _SplashScreenState extends State<SplashScreen>
                     "assets/images/rss.svg",
                     controller: controller,
                     onFinish: () {
-                      Timer(
-                        Duration(milliseconds: 200),
-                        toRightSScreen,
-                      );
+                      controller.dispose();
                     },
                     animationCurve: Curves.easeInOutBack,
                   ),

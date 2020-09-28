@@ -67,7 +67,25 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
           Align(
             alignment: Alignment.centerRight,
             child: FlatButton(
-              onPressed: refresh,
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  child: new AlertDialog(
+                    // title: new Text(""),
+                    content: Container(
+                      color: Colors.white10,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          new CircularProgressIndicator(),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+
+                refresh();
+              },
               child: Text(
                 "به‌روز‌رسانی",
                 style: TextStyle(
@@ -94,12 +112,13 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
       body: isReady
           ? ListView.builder(
               itemCount: x.items.length,
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(20),
               // itemCount: x.items.length,
               itemBuilder: (context, index) {
                 return NewsWidget(
                     // TODO get from list
                     desc: x.items[index].description,
+                    url: x.items[index].link,
                     title: x.items[index].title);
               },
             )
@@ -127,6 +146,7 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
         var channel = new RssFeed.parse(bodyString);
         x = channel;
       });
+      Navigator.of(context).pop();
       setState(() {
         isReady = true; //TODO use provider
       });
