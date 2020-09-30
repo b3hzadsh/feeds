@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 import 'package:flutter_app/widgets/cat_widget.dart';
+
+import 'favorite.dart';
 // import 'package:nice_button/nice_button.dart';
 // import 'package:connectivity/connectivity.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
@@ -16,6 +18,21 @@ class ChoosingCatScreen extends StatelessWidget {
           "انتخاب دسته ها ",
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.star,
+                color: Colors.yellow,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FavoritScreen(),
+                  ),
+                );
+              })
+        ],
       ),
       body: Center(
         child: Container(

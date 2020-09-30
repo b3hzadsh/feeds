@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+import '../utils/news_model.dart';
+import '../utils/DataBase.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 class NewsWidget extends StatefulWidget {
@@ -44,22 +47,29 @@ class _NewsWidgetState extends State<NewsWidget> {
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.right,
               ),
-              //Paulo [P,a,u,l,o]
               leading: IconButton(
                   icon: Icon(
                     Icons.star,
                     color: widget.isChecked ? Colors.orangeAccent : Colors.grey,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     setState(() {
                       widget.isChecked = !widget.isChecked;
                     });
+                    if (widget.isChecked) {
+                      NewsModel x = NewsModel(
+                          url: widget.url,
+                          desc: widget.desc,
+                          title: widget.title);
+                      await DBProvider.db.newClient(x);
+                    } else
+                      await DBProvider.db.deleteClient(widget.url);
 
                     //TODO make icon yellow and write it in database
                   }),
               onTap: () => {}),
         ),
-        /* Divider(
+        /* Divider( 
           height: 3.4,
         ), */
       ],

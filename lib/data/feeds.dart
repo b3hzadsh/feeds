@@ -4,7 +4,7 @@ class FeedData {
       // 0
       "https://downloadly.ir/feed/",
       "https://www.farsroid.com/feed",
-      "http://download.ir/feed/"
+      "https://download.ir/feed/"
     ],
     "movie": [
       // 1

@@ -2,7 +2,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:flutter_app/screens/choosing_cat_screen.dart';
-import 'package:flutter_app/screens/state_managment/state_managment.dart';
 import 'package:flutter_app/widgets/news_widget.dart';
 import 'package:http/http.dart' as http;
 import 'package:dart_rss/dart_rss.dart';
@@ -61,7 +60,7 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
         centerTitle: true,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.pinkAccent[200]),
+          style: TextStyle(color: Colors.red),
         ),
         actions: [
           Align(
@@ -83,6 +82,7 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
                     ),
                   ),
                 );
+                // Navigator.of(context).push(route)
 
                 refresh();
               },
