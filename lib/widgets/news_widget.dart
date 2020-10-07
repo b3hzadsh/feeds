@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../utils/news_model.dart';
 import '../utils/DataBase.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 class NewsWidget extends StatefulWidget {
-  bool isChecked = false;
+  @required
+  final bool isChecked;
   final String title;
   final String desc;
   final String url;
-  NewsWidget({this.title, this.desc, this.url});
+  NewsWidget({this.title, this.desc, this.url, this.isChecked});
 
   @override
   _NewsWidgetState createState() => _NewsWidgetState();
 }
 
 class _NewsWidgetState extends State<NewsWidget> {
+  bool tempIsChecked;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    tempIsChecked = widget.isChecked;
+  }
+
   @override
   Widget build(BuildContext context) {
     String smallerString() {
@@ -50,13 +60,12 @@ class _NewsWidgetState extends State<NewsWidget> {
               leading: IconButton(
                   icon: Icon(
                     Icons.star,
-                    color: widget.isChecked ? Colors.orangeAccent : Colors.grey,
+                    color: tempIsChecked ? Colors.blue : Colors.grey,
                   ),
                   onPressed: () async {
-                    setState(() {
-                      widget.isChecked = !widget.isChecked;
-                    });
-                    if (widget.isChecked) {
+                    tempIsChecked = !tempIsChecked;
+
+                    if (tempIsChecked) {
                       NewsModel x = NewsModel(
                           url: widget.url,
                           desc: widget.desc,
@@ -64,10 +73,19 @@ class _NewsWidgetState extends State<NewsWidget> {
                       await DBProvider.db.newClient(x);
                     } else
                       await DBProvider.db.deleteClient(widget.url);
-
+                    setState(() {});
                     //TODO make icon yellow and write it in database
                   }),
-              onTap: () => {}),
+              onTap: () async => {
+                    if (await canLaunch(widget.url))
+                      {
+                        await launch(widget.url),
+                      }
+                    else
+                      {
+                        throw 'Could not launch url',
+                      }
+                  }),
         ),
         /* Divider( 
           height: 3.4,

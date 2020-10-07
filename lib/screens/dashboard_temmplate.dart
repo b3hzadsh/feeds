@@ -56,14 +56,34 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.refresh),
+          onPressed: () {
+            showDialog(
+              context: context,
+              child: new AlertDialog(
+                // title: new Text(""),
+                content: Container(
+                  color: Colors.white10,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      new CircularProgressIndicator(),
+                    ],
+                  ),
+                ),
+              ),
+            );
+            refresh();
+          }),
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.red),
+          style: TextStyle(color: Colors.white),
         ),
         actions: [
-          Align(
+          /* Align(
             alignment: Alignment.centerRight,
             child: FlatButton(
               onPressed: () {
@@ -94,7 +114,7 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
                 ),
               ),
             ),
-          ),
+          ), */
           /*  IconButton(
               icon: Icon(Icons.fullscreen),
               onPressed: () {
@@ -116,6 +136,7 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
               // itemCount: x.items.length,
               itemBuilder: (context, index) {
                 return NewsWidget(
+                    isChecked: false,
                     // TODO get from list
                     desc: x.items[index].description,
                     url: x.items[index].link,
@@ -124,7 +145,7 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
             )
           : Center(
               child: Text(
-                "برای مشاهده اخبار دکمه به‌روز‌رسانی را فشار دهید",
+                "برای مشاهده اخبار دکمه به‌روز‌رسانی ⟳ 🔄 را فشار دهید",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25,

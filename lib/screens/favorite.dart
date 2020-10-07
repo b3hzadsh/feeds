@@ -32,11 +32,13 @@ class _FavoritScreenState extends State<FavoritScreen> {
                   /* NewsWidget(snapshot.data[index].); */
                   if (snapshot.hasData) {
                     return NewsWidget(
+                      isChecked: true,
                       desc: snapshot.data[index].desc,
                       title: snapshot.data[index].title,
                       url: snapshot.data[index].url,
                     );
                   }
+                  return Container();
                 },
                 padding: EdgeInsets.all(8),
               );
