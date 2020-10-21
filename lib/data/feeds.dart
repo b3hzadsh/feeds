@@ -3,7 +3,7 @@ class FeedData {
     "dls": [
       // 0
       "https://downloadly.ir/feed/",
-      "https://www.farsroid.com/feed",
+      "https://androidkade.com/feed",
       "https://download.ir/feed/"
     ],
     "movie": [

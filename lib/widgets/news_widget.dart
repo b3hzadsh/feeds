@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/utils/bloc.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/news_model.dart';
@@ -39,58 +40,66 @@ class _NewsWidgetState extends State<NewsWidget> {
       return temp;
     }
 
-    return Column(
-      children: <Widget>[
-        Card(
-          elevation: 0.8,
-          shadowColor: Colors.black38,
-          child: ListTile(
-              // contentPadding: EdgeInsets.symmetric(horizontal: 15),
-              title: Text(
-                widget.title,
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.right,
-                style: TextStyle(fontSize: 17.2, fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text(
-                smallerString(),
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.right,
-              ),
-              leading: IconButton(
-                  icon: Icon(
-                    Icons.star,
-                    color: tempIsChecked ? Colors.blue : Colors.grey,
-                  ),
-                  onPressed: () async {
-                    tempIsChecked = !tempIsChecked;
-
-                    if (tempIsChecked) {
-                      NewsModel x = NewsModel(
-                          url: widget.url,
-                          desc: widget.desc,
-                          title: widget.title);
-                      await DBProvider.db.newClient(x);
-                    } else
-                      await DBProvider.db.deleteClient(widget.url);
-                    setState(() {});
-                    //TODO make icon yellow and write it in database
-                  }),
-              onTap: () async => {
-                    if (await canLaunch(widget.url))
-                      {
-                        await launch(widget.url),
-                      }
-                    else
-                      {
-                        throw 'Could not launch url',
-                      }
-                  }),
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(37, 68, 65, 1),
+        border: Border.all(
+          width: 2.0,
+          color: Colors.lightBlue[300],
         ),
-        /* Divider( 
-          height: 3.4,
-        ), */
-      ],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: ListTile(
+          // contentPadding: EdgeInsets.symmetric(horizontal: 15),
+          title: Text(
+            widget.title,
+            textDirection: TextDirection.rtl,
+            textAlign: TextAlign.right,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 17.2,
+                fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            smallerString(),
+            textDirection: TextDirection.rtl,
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: Color(0XFFB7ADCF),
+            ),
+          ),
+          leading: IconButton(
+              icon: Icon(Icons.star,
+                  color: tempIsChecked
+                      ? Color.fromRGBO(255, 225, 0, 1)
+                      : Colors.grey),
+              onPressed: () async {
+                bloc.fchange(1);
+                tempIsChecked = !tempIsChecked;
+
+                if (tempIsChecked) {
+                  NewsModel x = NewsModel(
+                      url: widget.url, desc: widget.desc, title: widget.title);
+                  try {
+                    await DBProvider.db.newClient(x);
+                  } catch (e) {
+                    print(e);
+                  }
+                } else
+                  await DBProvider.db.deleteClient(widget.url);
+                setState(() {});
+                //TODO make icon yellow and write it in database
+              }),
+          onTap: () async => {
+                if (await canLaunch(widget.url))
+                  {
+                    await launch(widget.url),
+                  }
+                else
+                  {
+                    throw 'Could not launch url',
+                  }
+              }),
     );
 
     /* Expanded(

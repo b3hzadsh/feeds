@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 import 'package:flutter_app/widgets/cat_widget.dart';
 
-import 'favorite.dart';
 // import 'package:nice_button/nice_button.dart';
 // import 'package:connectivity/connectivity.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
@@ -14,6 +13,8 @@ class ChoosingCatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.9,
+        backgroundColor: Color.fromRGBO(30, 60, 60, 1),
         title: Text(
           "انتخاب دسته ها ",
         ),
@@ -22,22 +23,16 @@ class ChoosingCatScreen extends StatelessWidget {
           IconButton(
               icon: Icon(
                 Icons.star,
-                color: Colors.yellow,
+                color: Color.fromRGBO(255, 225, 0, 1),
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FavoritScreen(),
-                  ),
-                );
+                Navigator.pushNamed(context, "/favorite");
               })
         ],
       ),
-      body: Center(
-        child: Container(
-          color: Colors.white12,
-          // alignment: Alignment.topCenter,
+      body: Container(
+        color: Color.fromRGBO(37, 68, 65, 1),
+        child: Center(
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -54,8 +49,9 @@ class ChoosingCatScreen extends StatelessWidget {
                           "مایلید در جریان کدام اخبار قرار بگیرید ؟",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87),
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(235, 235, 235, 1),
+                          ),
                         ),
                       ),
                       3),
@@ -171,7 +167,7 @@ class ChoosingCatScreen extends StatelessWidget {
 
   Widget myAnimatedWidget(Widget widget, int index) {
     return ShowUpAnimation(
-      delayStart: Duration(milliseconds: 400 * index),
+      delayStart: Duration(milliseconds: 200 * index),
       animationDuration: Duration(milliseconds: 350),
       curve: Curves.bounceIn,
       direction: Direction.horizontal,

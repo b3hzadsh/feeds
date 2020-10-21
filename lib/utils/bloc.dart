@@ -1,0 +1,10 @@
+import 'dart:async';
+
+class MyBloC {
+  StreamController _favoriteScreen = StreamController.broadcast();
+
+  get fstream => _favoriteScreen.stream;
+  get fchange => _favoriteScreen.sink.add;
+}
+
+MyBloC bloc = new MyBloC();

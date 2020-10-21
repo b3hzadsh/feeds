@@ -19,13 +19,6 @@ class CatCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, "/id:$id/title:$title");
-
-        /* Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) =>
-                DaashboardTemplate(FeedData.feedUrls[id], title),
-          ),
-        ); */
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,7 +66,7 @@ class CatCard extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              color: Colors.black87,
+              color: Color.fromRGBO(235, 235, 235, 1),
               fontSize: 15,
             ),
           )

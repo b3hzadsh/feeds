@@ -53,18 +53,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/sport.jpg
-    - assets/images/IT.jpg
-    - assets/images/ball.png
-    - assets/images/dl.png
-    - assets/images/game.png
-    - assets/images/movie.png
-    - assets/images/economy.png
-    - assets/images/breaking.png
-    - assets/images/footbal.png
-    - assets/images/politic.jpg
-    - assets/images/uni.jpg
-    - assets/images/rss.svg
+    - assets/images/
+    
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

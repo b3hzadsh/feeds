@@ -19,9 +19,8 @@ class DaashboardTemplate extends StatefulWidget {
 class _DaashboardTemplateState extends State<DaashboardTemplate> {
   Random oneToThree = new Random();
 
-  RssFeed x;
   bool isReady = false;
-
+  RssFeed x;
   Widget _simplePopup(BuildContext context) => PopupMenuButton<int>(
         color: Colors.white,
         icon: Icon(Icons.more_vert),
@@ -57,98 +56,56 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+          foregroundColor: Colors.white,
+          splashColor: Colors.orange,
           child: Icon(Icons.refresh),
           onPressed: () {
-            showDialog(
-              context: context,
-              child: new AlertDialog(
-                // title: new Text(""),
-                content: Container(
-                  color: Colors.white10,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      new CircularProgressIndicator(),
-                    ],
-                  ),
-                ),
-              ),
-            );
             refresh();
           }),
       appBar: AppBar(
+        elevation: 0.5,
+        backgroundColor: Color.fromRGBO(37, 68, 65, 1),
         centerTitle: true,
         title: Text(
           widget.title,
           style: TextStyle(color: Colors.white),
         ),
         actions: [
-          /* Align(
-            alignment: Alignment.centerRight,
-            child: FlatButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  child: new AlertDialog(
-                    // title: new Text(""),
-                    content: Container(
-                      color: Colors.white10,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          new CircularProgressIndicator(),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-                // Navigator.of(context).push(route)
-
-                refresh();
-              },
-              child: Text(
-                "به‌روز‌رسانی",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ), */
-          /*  IconButton(
-              icon: Icon(Icons.fullscreen),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (contex) => SplashScreen(),
-                  ),
-                );
-              }), */
-
           _simplePopup(context),
         ],
       ),
       body: isReady
-          ? ListView.builder(
-              itemCount: x.items.length,
-              padding: EdgeInsets.all(20),
-              // itemCount: x.items.length,
-              itemBuilder: (context, index) {
-                return NewsWidget(
-                    isChecked: false,
-                    // TODO get from list
-                    desc: x.items[index].description,
-                    url: x.items[index].link,
-                    title: x.items[index].title);
-              },
+          ? Container(
+              color: Color.fromRGBO(37, 68, 65, 1),
+              child: ListView.builder(
+                itemCount: x.items.length,
+                padding: EdgeInsets.all(20),
+                // itemCount: x.items.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      NewsWidget(
+                          isChecked: false,
+                          desc: x.items[index].description,
+                          url: x.items[index].link,
+                          title: x.items[index].title),
+                      SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  );
+                },
+              ),
             )
-          : Center(
-              child: Text(
-                "برای مشاهده اخبار دکمه به‌روز‌رسانی ⟳ 🔄 را فشار دهید",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25,
+          : Container(
+              color: Color.fromRGBO(37, 68, 65, 1),
+              child: Center(
+                child: Text(
+                  "برای مشاهده اخبار دکمه زیر (⟳) را فشار دهید",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 25,
+                  ),
                 ),
               ),
             ),
@@ -159,18 +116,50 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
+      showDialog(
+        context: context,
+        child: AlertDialog(
+          backgroundColor: Colors.transparent,
+          content: Container(
+            color: Colors.transparent,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                new CircularProgressIndicator(),
+              ],
+            ),
+          ),
+        ),
+      );
       var client = new http.Client();
       await client.get(widget.urls[oneToThree.nextInt(2)]) //TODO its a var
           .then((response) {
         return response.body;
       }).then((bodyString) {
         var channel = new RssFeed.parse(bodyString);
+        x = null;
         x = channel;
       });
       Navigator.of(context).pop();
       setState(() {
-        isReady = true; //TODO use provider
+        isReady = true;
       });
+    } else {
+      showDialog(
+        context: context,
+        child: AlertDialog(
+          backgroundColor: Colors.blue,
+          content: Text("مشکل در برقراری ارتباط با شبکه"),
+          actions: [
+            FlatButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("تایید"),
+            ),
+          ],
+        ),
+      );
     }
   }
 }
