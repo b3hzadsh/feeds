@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/utils/bloc.dart';
-import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
+// import 'package:flutter_app/utils/bloc.dart';
+// import 'package:provider/provider.dart';
+// import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/news_model.dart';
 import '../utils/DataBase.dart';

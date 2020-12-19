@@ -42,13 +42,6 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
               //style: TextStyle(color: Colors.black54),
             ),
           ),
-          PopupMenuItem(
-            value: 2,
-            child: Text(
-              "state managment",
-              //style: TextStyle(color: Colors.black87),
-            ),
-          ),
         ],
       );
 
@@ -153,6 +146,18 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
       showDialog(
         context: context,
         child: AlertDialog(
+          insetPadding: EdgeInsets.symmetric(horizontal: 1),
+          // backgroundColor: Colors.red,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("خطا"),
+              Icon(
+                Icons.error,
+                color: Colors.red,
+              ),
+            ],
+          ),
           // backgroundColor: Colors.blue,
           content: Text("مشکل در برقراری ارتباط با شبکه"),
           actions: [

@@ -33,13 +33,13 @@ class ChoosingCatScreen extends StatelessWidget {
               })
         ],
       ),
-      body: Container(
-        // color: Color.fromRGBO(37, 68, 65, 1),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              // child: AnimationLimiter(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            // child: AnimationLimiter(
+            child: Container(
+              width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -49,7 +49,7 @@ class ChoosingCatScreen extends StatelessWidget {
                   myAnimatedWidget(
                       Container(
                         child: Text(
-                          "مایلید در جریان کدام اخبار قرار بگیرید ؟",
+                          "مایلید در جریان  اخبار کدام حوزه قرار بگیرید ؟",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -74,7 +74,7 @@ class ChoosingCatScreen extends StatelessWidget {
                             imageUrl: "assets/images/ball.png",
                             // sport is 9
                           ),
-                          4),
+                          2),
                       myAnimatedWidget(
                           CatCard(
                             id: 'it',
@@ -83,16 +83,26 @@ class ChoosingCatScreen extends StatelessWidget {
                             imageUrl: "assets/images/IT.jpg",
                             // it is 3
                           ),
-                          5),
+                          2),
                       myAnimatedWidget(
                           CatCard(
-                            id: 'dls',
+                            id: 'iranianFootbal',
                             cardColor: Colors.white,
-                            title: "دانلود",
-                            imageUrl: "assets/images/dl.png",
-                            // dl is 0
+                            title: "فوتبال ایران",
+                            imageUrl: "assets/images/footbal.png",
+                            // economy is 4
                           ),
-                          6),
+                          4),
+                      myAnimatedWidget(
+                          CatCard(
+                            id: 'lastNews',
+                            cardColor: Colors.white,
+                            title: "تازه ترین اخبار",
+                            imageUrl: "assets/images/breaking.png",
+                            // economy is 4
+                          ),
+                          4),
+
                       myAnimatedWidget(
                           CatCard(
                             id: 'game',
@@ -100,6 +110,15 @@ class ChoosingCatScreen extends StatelessWidget {
                             title: "بازی",
                             imageUrl: "assets/images/game.png",
                             // game is 2
+                          ),
+                          6),
+                      myAnimatedWidget(
+                          CatCard(
+                            id: 'economy',
+                            cardColor: Colors.white,
+                            title: "اقتصاد",
+                            imageUrl: "assets/images/economy.png",
+                            // economy is 4
                           ),
                           7),
                       myAnimatedWidget(
@@ -113,31 +132,14 @@ class ChoosingCatScreen extends StatelessWidget {
                           8),
                       myAnimatedWidget(
                           CatCard(
-                            id: 'economy',
-                            cardColor: Colors.white,
-                            title: "اقتصاد",
-                            imageUrl: "assets/images/economy.png",
-                            // economy is 4
-                          ),
-                          9),
-                      myAnimatedWidget(
-                          CatCard(
                             id: 'politics',
                             cardColor: Colors.white,
                             title: "سیاست",
                             imageUrl: "assets/images/politic.jpg",
                             // economy is 4
                           ),
-                          10),
-                      myAnimatedWidget(
-                          CatCard(
-                            id: 'iranianFootbal',
-                            cardColor: Colors.white,
-                            title: "فوتبال ایران",
-                            imageUrl: "assets/images/footbal.png",
-                            // economy is 4
-                          ),
-                          11),
+                          8),
+
                       myAnimatedWidget(
                           CatCard(
                             id: 'scientificAcademic',
@@ -146,16 +148,17 @@ class ChoosingCatScreen extends StatelessWidget {
                             imageUrl: "assets/images/uni.jpg",
                             // economy is 4
                           ),
-                          12),
+                          9),
                       myAnimatedWidget(
                           CatCard(
-                            id: 'lastNews',
+                            id: 'dls',
                             cardColor: Colors.white,
-                            title: "تازه ترین اخبار",
-                            imageUrl: "assets/images/breaking.png",
-                            // economy is 4
+                            title: "دانلود",
+                            imageUrl: "assets/images/dl.png",
+                            // dl is 0
                           ),
-                          13),
+                          9),
+
                       // add economy politic
                     ],
                   ),

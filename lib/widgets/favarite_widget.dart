@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/bloc.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/news_model.dart';
@@ -44,8 +44,9 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
 
     return Dismissible(
       onDismissed: (_) async {
+        /* 
         NewsModel x =
-            NewsModel(url: widget.url, desc: widget.desc, title: widget.title);
+            NewsModel(url: widget.url, desc: widget.desc, title: widget.title); */
         try {
           await DBProvider.db.deleteClient(widget.url);
           /*  bloc.fchange(1); */

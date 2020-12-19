@@ -46,6 +46,11 @@ void main() {
 Route route(RouteSettings setting) {
   if (setting.name == "/")
     return MaterialPageRoute(
+      builder: (context) => SplashScreen(),
+      // builder: (context) => ChoosingCatScreen(),
+    );
+  else if (setting.name == "/cat")
+    return MaterialPageRoute(
       // builder: (context) => SplashScreen(),
       builder: (context) => ChoosingCatScreen(),
     );
