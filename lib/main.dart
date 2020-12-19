@@ -9,6 +9,29 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
+      /*  theme: ThemeData(
+        fontFamily: 'D',
+        brightness: Brightness.dark,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        backgroundColor: Color(0XFFBBDEFB),
+        primaryColor: Color(0XFFffffff),
+        primaryColorDark: Color(0XFF1976D2),
+        /* textTheme: TextTheme(
+          headline6: TextStyle(
+            color: Color(0XFF212121),
+            fontFamily: "B",
+          ),
+          headline1: TextStyle(color: Color(0XFF212121)),
+          subtitle1: TextStyle(color: Color(0XFF757575)),
+        ), */
+        dividerColor: Color(0XFFBDBDBD),
+        accentColor: Color(0XFF483D3F),
+        /* primaryTextTheme: TextTheme(
+          caption: TextStyle(
+            color: Color(0XFF212121),
+          ),
+        ), */
+      ), */
       // home: SplashScreen(),
       onGenerateRoute: route,
       /* theme: ThemeData(

@@ -22,7 +22,7 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
   bool isReady = false;
   RssFeed x;
   Widget _simplePopup(BuildContext context) => PopupMenuButton<int>(
-        color: Colors.white,
+        // color: Colors.white,
         icon: Icon(Icons.more_vert),
         onSelected: (value) async {
           if (value == 1) {
@@ -39,14 +39,14 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
             value: 1,
             child: Text(
               "انتخاب دسته",
-              style: TextStyle(color: Colors.black54),
+              //style: TextStyle(color: Colors.black54),
             ),
           ),
           PopupMenuItem(
             value: 2,
             child: Text(
               "state managment",
-              style: TextStyle(color: Colors.black87),
+              //style: TextStyle(color: Colors.black87),
             ),
           ),
         ],
@@ -55,20 +55,24 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
-          foregroundColor: Colors.white,
-          splashColor: Colors.orange,
-          child: Icon(Icons.refresh),
+          //foregroundColor: Colors.white,
+          // splashColor: Colors.orange,
+          child: Icon(
+            Icons.refresh,
+          ),
           onPressed: () {
             refresh();
           }),
       appBar: AppBar(
         elevation: 0.5,
-        backgroundColor: Color.fromRGBO(37, 68, 65, 1),
+        // backgroundColor: Color.fromRGBO(37, 68, 65, 1),
         centerTitle: true,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(fontFamily: "D"),
+          // style: TextStyle(color: Colors.white),
         ),
         actions: [
           _simplePopup(context),
@@ -76,10 +80,10 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
       ),
       body: isReady
           ? Container(
-              color: Color.fromRGBO(37, 68, 65, 1),
+              // color: Color.fromRGBO(37, 68, 65, 1),
               child: ListView.builder(
                 itemCount: x.items.length,
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(5),
                 // itemCount: x.items.length,
                 itemBuilder: (context, index) {
                   return Column(
@@ -89,16 +93,17 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
                           desc: x.items[index].description,
                           url: x.items[index].link,
                           title: x.items[index].title),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      /* SizedBox(
+                        height: 8,
+                      ), */
+                      Divider()
                     ],
                   );
                 },
               ),
             )
           : Container(
-              color: Color.fromRGBO(37, 68, 65, 1),
+              // color: Color.fromRGBO(37, 68, 65, 1),
               child: Center(
                 child: Text(
                   "برای مشاهده اخبار دکمه زیر (⟳) را فشار دهید",
@@ -148,7 +153,7 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
       showDialog(
         context: context,
         child: AlertDialog(
-          backgroundColor: Colors.blue,
+          // backgroundColor: Colors.blue,
           content: Text("مشکل در برقراری ارتباط با شبکه"),
           actions: [
             FlatButton(

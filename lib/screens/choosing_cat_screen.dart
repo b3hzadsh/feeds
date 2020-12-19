@@ -14,9 +14,12 @@ class ChoosingCatScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.9,
-        backgroundColor: Color.fromRGBO(30, 60, 60, 1),
+        /* backgroundColor:
+            Theme.of(context).backgroundColor, */ // Color.fromRGBO(30, 60, 60, 1),
         title: Text(
-          "انتخاب دسته ها ",
+          // "انتخاب دسته ها ",
+          "انتخاب موضوع",
+          style: TextStyle(fontFamily: "D"),
         ),
         centerTitle: true,
         actions: [
@@ -31,7 +34,7 @@ class ChoosingCatScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        color: Color.fromRGBO(37, 68, 65, 1),
+        // color: Color.fromRGBO(37, 68, 65, 1),
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
@@ -50,7 +53,7 @@ class ChoosingCatScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(235, 235, 235, 1),
+                            //color: Color.fromRGBO(235, 235, 235, 1),
                           ),
                         ),
                       ),

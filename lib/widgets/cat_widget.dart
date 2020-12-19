@@ -66,7 +66,7 @@ class CatCard extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              color: Color.fromRGBO(235, 235, 235, 1),
+              //color: Color.fromRGBO(235, 235, 235, 1),
               fontSize: 15,
             ),
           )

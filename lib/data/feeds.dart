@@ -9,8 +9,8 @@ class FeedData {
     "movie": [
       // 1
       "https://dlroozane.net/feed",
-      // "https://www.uptvs.com/feed",
-      "https://lianmovie.com/feed",
+      "https://www.uptvs.com/feed",
+      //"https://lianmovie.com/feed",
       "https://www.film2movie.asia/feed",
     ],
     "game": [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/Database.dart';
 import 'package:flutter_app/utils/bloc.dart';
 import 'package:flutter_app/utils/news_model.dart';
+import 'package:flutter_app/widgets/favarite_widget.dart';
 import 'package:flutter_app/widgets/news_widget.dart';
 import 'dart:async';
 
@@ -16,8 +17,11 @@ class _FavoritScreenState extends State<FavoritScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.9,
-        backgroundColor: Color.fromRGBO(37, 68, 65, 1),
-        title: Text("اخبار دلخواه"),
+        //backgroundColor: Color.fromRGBO(37, 68, 65, 1),
+        title: Text(
+          "اخبار دلخواه",
+          style: TextStyle(fontFamily: "D"),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
@@ -33,8 +37,8 @@ class _FavoritScreenState extends State<FavoritScreen> {
       body: SafeArea(
         child: StreamBuilder(
           stream: bloc.fstream,
-          builder: (context, snapshot) => Container(
-            color: Color.fromRGBO(37, 68, 65, 1),
+          builder: (context, _) => Container(
+            //color: Color.fromRGBO(37, 68, 65, 1),
             // padding: EdgeInsets.all(15),
 
             child: FutureBuilder<List<NewsModel>>(
@@ -51,21 +55,19 @@ class _FavoritScreenState extends State<FavoritScreen> {
                     if (snapshot.hasData) {
                       return Column(
                         children: [
-                          NewsWidget(
+                          FavoriteWidget(
                             isChecked: true,
                             desc: snapshot.data[index].desc,
                             title: snapshot.data[index].title,
                             url: snapshot.data[index].url,
                           ),
-                          SizedBox(
-                            height: 20,
-                          )
+                          //Divider()
                         ],
                       );
                     }
                     return Container();
                   },
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.only(top: 8),
                 );
               },
             ),

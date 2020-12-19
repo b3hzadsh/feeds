@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/news_model.dart';
@@ -29,6 +30,7 @@ class _NewsWidgetState extends State<NewsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
     String smallerString() {
       var spilited = widget.desc.split(" ");
       var range = spilited.length;
@@ -42,12 +44,12 @@ class _NewsWidgetState extends State<NewsWidget> {
 
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromRGBO(37, 68, 65, 1),
-        border: Border.all(
-          width: 2.0,
-          color: Colors.lightBlue[300],
-        ),
-        borderRadius: BorderRadius.circular(10),
+        //color: Colors.white,
+        /* border: Border.all(
+              width: 1.3,
+              color: Colors.black38,
+            ), */
+        borderRadius: BorderRadius.circular(width / 20),
       ),
       child: ListTile(
           // contentPadding: EdgeInsets.symmetric(horizontal: 15),
@@ -56,7 +58,8 @@ class _NewsWidgetState extends State<NewsWidget> {
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.right,
             style: TextStyle(
-                color: Colors.white,
+                color: Color(0XFF212121).withOpacity(0.9),
+                // color: Colors.white,
                 fontSize: 17.2,
                 fontWeight: FontWeight.bold),
           ),
@@ -65,16 +68,15 @@ class _NewsWidgetState extends State<NewsWidget> {
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.right,
             style: TextStyle(
-              color: Color(0XFFB7ADCF),
+              color: Color(0XFF757575),
             ),
           ),
           leading: IconButton(
               icon: Icon(Icons.star,
                   color: tempIsChecked
-                      ? Color.fromRGBO(255, 225, 0, 1)
+                      ? Color.fromRGBO(255, 200, 0, 1)
                       : Colors.grey),
               onPressed: () async {
-                bloc.fchange(1);
                 tempIsChecked = !tempIsChecked;
 
                 if (tempIsChecked) {
@@ -82,12 +84,16 @@ class _NewsWidgetState extends State<NewsWidget> {
                       url: widget.url, desc: widget.desc, title: widget.title);
                   try {
                     await DBProvider.db.newClient(x);
+                    //bloc.fchange(1);
                   } catch (e) {
                     print(e);
                   }
-                } else
+                } else {
                   await DBProvider.db.deleteClient(widget.url);
+                  // bloc.fchange(1);
+                }
                 setState(() {});
+
                 //TODO make icon yellow and write it in database
               }),
           onTap: () async => {
