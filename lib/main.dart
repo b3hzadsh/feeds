@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/dashboard_temmplate.dart';
 import 'package:flutter_app/screens/favorite.dart';
+import 'package:flutter_app/screens/choosing_cat_screen.dart';
 import 'package:flutter_app/screens/splash_screen.dart';
 import 'data/feeds.dart';
 
@@ -45,7 +46,8 @@ void main() {
 Route route(RouteSettings setting) {
   if (setting.name == "/")
     return MaterialPageRoute(
-      builder: (context) => SplashScreen(),
+      // builder: (context) => SplashScreen(),
+      builder: (context) => ChoosingCatScreen(),
     );
   else if (setting.name == "/favorite")
     return MaterialPageRoute(

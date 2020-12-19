@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color.fromRGBO(37, 68, 65, 1),
+        color: Colors.white,
         padding: EdgeInsets.symmetric(vertical: 10),
         //padding: EdgeInsets.symmetric(horizontal: 15),
         child: Center(
@@ -40,6 +40,8 @@ class _SplashScreenState extends State<SplashScreen>
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
+                width: MediaQuery.of(context).size.width / 1.5,
+                height: MediaQuery.of(context).size.height / 1.5,
                 child: Expanded(
                   child: AnimatedDrawing.svg(
                     "assets/images/rss.svg",
