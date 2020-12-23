@@ -9,11 +9,11 @@
                               "program": "lib/main.dart",
                               "request": "launch",
                               "type": "dart",
-                              "args": [
+                              /* "args": [
                                         "--enable-software-rendering",
                                         "-d",
                                         "all"
-                              ]
+                              ] */
                     }
           ]
 }

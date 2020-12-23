@@ -130,8 +130,7 @@ class _DaashboardTemplateState extends State<DaashboardTemplate> {
         ),
       );
       var client = new http.Client();
-      await client.get(widget.urls[oneToThree.nextInt(2)]) //TODO its a var
-          .then((response) {
+      await client.get(widget.urls[oneToThree.nextInt(2)]).then((response) {
         return response.body;
       }).then((bodyString) {
         var channel = new RssFeed.parse(bodyString);

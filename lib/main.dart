@@ -66,4 +66,8 @@ Route route(RouteSettings setting) {
       builder: (context) => DaashboardTemplate(FeedData.feedUrls[id], title),
     );
   }
+  return MaterialPageRoute(
+    // builder: (context) => SplashScreen(),
+    builder: (context) => ChoosingCatScreen(),
+  );
 }
