@@ -124,7 +124,10 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                         }
                     }),
           ),
-          Divider()
+          Divider(
+            color: Colors.black38,
+            thickness: 0.9,
+          )
         ],
       ),
     );
