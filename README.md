@@ -19,7 +19,7 @@ height="306px" width="170px" src="./assets/images/screen_shots/1.jpg" alt="kelid
 To build and run the app on your device, do the following:
 
 -   [Install Flutter](https://flutter.dev/docs/get-started/install/) by following the instructions on their website.
--   Fork/clone this repo to your local machine using `git clone https://github.com/b3hzadsh/apps-inf0.git`.
+-   Fork/clone this repo to your local machine using `git clone https://github.com/b3hzadsh/feeds.git`.
 -   Connect your devices/emulators and run the app using `flutter run --release` in the root of the project directory.
 
 Note: you can also run it faster in debug mode using `flutter run`, but the animations will be choppy and performance won't be as expected.
