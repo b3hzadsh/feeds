@@ -12,7 +12,7 @@ see the the full text of special news
 ## Screenshots
 
 <p><img 
-height="306px" width="170px" src="./assets/images/screen_shots/1.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/2.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/5.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/6.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/7.jpg" alt="kelid khabar"/></p>
+height="306px" width="170px" src="./assets/images/screen_shots/1.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/2.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/5.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/6.jpg" alt="kelid khabar"/> </p>
 
 ## Building
 
