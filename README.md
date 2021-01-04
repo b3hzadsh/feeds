@@ -1,16 +1,31 @@
-# flutter_app
+<p align="left"><img height="180px" width="180px" src="./assets/images/screenshots/key.png" alt="kelid-khabar"/></p>
 
-App bring your favorite news to you 
+# kelid khabar
 
-## Getting Started
+A neat, nice looking Flutter app to visualize a dataset ! It can be built for iOS and Android .
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Screenshots
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p><img 
+height="306px" width="170px" src="./assets/images/screen_shots/1.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/2.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/5.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/6.jpg" alt="kelid khabar"/> <img height="306px" width="170px" src="./assets/images/screen_shots/7.jpg" alt="kelid khabar"/></p>
+
+## Building
+
+To build and run the app on your device, do the following:
+
+-   [Install Flutter](https://flutter.dev/docs/get-started/install/) by following the instructions on their website.
+-   Fork/clone this repo to your local machine using `git clone https://github.com/b3hzadsh/apps-inf0.git`.
+-   Connect your devices/emulators and run the app using `flutter run --release` in the root of the project directory.
+
+Note: you can also run it faster in debug mode using `flutter run`, but the animations will be choppy and performance won't be as expected.
+
+## Contributing
+
+Found any bugs? Have any suggestions or code improvements? [Submit an issue](https://github.com/b3hzadsh/feeds/issues) or fork and send a [pull request](https://github.com/b3hzadsh/feeds/pulls) with your changes. All contributions are more than welcome, and will be merged into `flutter` (the default branch) if satisfactory.
+
+
+## License
+
+This project is licensed under the GPL License .
