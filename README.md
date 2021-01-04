@@ -2,9 +2,10 @@
 
 # kelid khabar
 
-An application you can use to get some news in different categories 
-set some of them as favorites
-see the the full text of special news 
+An application you can use to
+-          get some news in different categories 
+-          set some of them as favorites
+-          see the the full text of special news 
 
 
 
